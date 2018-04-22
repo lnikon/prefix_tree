@@ -1,39 +1,21 @@
 #include <iostream>
 #include <string>
 #include "prefix_tree.h"
+#include "trie_test.h"
 
 int main()
 {
   Trie trie;
+  TRIE_TEST trie_test;
 
-  // Insert
-  auto node = trie.insert(std::string("async"), 4);
-  std::cout << "value: " << node.first->value;
-  for(const auto& ch : node.first->m_children)
-  {
-    std::cout << "child: " << ch.first;
-  }
-  std::cout << "\n";
+  size_t count = 1000;
+  auto nodes = trie_test.TRIE_INSERT(trie, count);
 
-  // Find
-  auto foundAS = trie.find("as");
-  if(foundAS.second)
+  for(const auto &node : nodes)
   {
-    std::cout << "Found ""as""\n";
+    std::cout << node->value << ' ';
   }
-  else
-  {
-    std::cout << "Doesn't found ""as""\n";
-  }
+  std::cout << '\n';
 
-  auto foundDEB = trie.find("deb");
-  if(foundDEB.second)
-  {
-    std::cout << "Found ""deb""\n";
-  }
-  else
-  {
-    std::cout << "Doesn't found ""deb""\n";
-  }
   return 0;
 }
