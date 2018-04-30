@@ -4,6 +4,9 @@ project(trie VERSION 0.1.0)
 include(CTest)
 enable_testing()
 
+SET(GCC_COVERAGE_COMPILE_FLAGS "-Wall -Wextra -O2 -std=c++17 -pthread -fprofile-arcs -ftest-coverage")
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
+
 set(LIB_LOCAL "include/")
 include_directories(${LIB_LOCAL})
 
