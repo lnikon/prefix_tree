@@ -13,7 +13,7 @@ public:
   struct Node
   {
     std::unordered_map<char, std::unique_ptr<Node>> m_children;
-    T value {0};
+    T value;
     Node(): m_children() {}
   };
 
